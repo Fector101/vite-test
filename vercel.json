@@ -11,6 +11,7 @@
       "src": "/(.*)",
       "dest": "backend/server.js"
     }
-  ]
+  ],
+    "buildCommand": "npm install --prefix backend && npm install --prefix frontend"
   
 }
