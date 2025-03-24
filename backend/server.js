@@ -1,12 +1,7 @@
-
-
-
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
+const express = require("express");
+const path = require("path");
 
 const app = express();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Serve the built frontend
 app.use(express.static(path.join(__dirname, "frontend")));
