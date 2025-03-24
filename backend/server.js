@@ -1,19 +1,19 @@
-require('dotenv').config();
-const express = require("express");
+
+
+
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+
 const app = express();
-const cors = require("cors");
-const corsOptions = {
-  origin: [process.env.FRONTEND_URL || "http://localhost:5173"],
-  };
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-  app.use(cors(corsOptions));
+// Serve the built frontend
+app.use(express.static(path.join(__dirname, "frontend")));
 
-  app.get("/api", (req, res) => {
-    res.json({ fruits: ["apple", "strawberry", "pineapple"] });
-    });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "index.html"));
+});
 
-    app.listen(8080, () => {
-      console.log("Server started on port 8080");
-      });
-
-module.exports = app
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
