@@ -5,7 +5,7 @@ const app = express();
 
 // Serve the built frontend
 app.use(express.static(path.join(__dirname, "frontend")));
-
+console.log(path.join(__dirname, "frontend", "index.html"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "index.html"));
 });
